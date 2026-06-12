@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAGAS XIT | OFFICIAL STORE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #05020d; 
+            color: #ffffff;
+            font-family: 'Rajdhani', sans-serif;
+            min-height: 100vh;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: radial-gradient(circle at 50% 0%, rgba(147, 51, 234, 0.15) 0%, transparent 50%);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 460px;
+            background: #0f0720; 
+            border: 1px solid #9333ea;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(147, 51, 234, 0.3);
+            position: relative;
+        }
+
+        .container::after {
+            content: "";
+            position: absolute;
+            top: -1px; left: 20px; right: 20px; height: 1px;
+            background: linear-gradient(90deg, transparent, #06b6d4, #9333ea, transparent);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* LOGO KUCING SVG STYLING */
+        .brand-logo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 2px solid #9333ea;
+            box-shadow: 0 0 10px rgba(147, 51, 234, 0.5);
+            margin-bottom: 10px;
+            padding: 5px; /* Kasih jarak biar SVG gak nempel border */
+            background: #0f0720;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .brand-logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Animasi mata kucing berkedip/glowing */
+        @keyframes cat-eye-glow {
+            0%, 100% { opacity: 1; filter: drop-shadow(0 0 2px #06b6d4); }
+            50% { opacity: 0.6; filter: drop-shadow(0 0 5px #06b6d4); }
+        }
+
+        .cat-eye {
+            animation: cat-eye-glow 2s infinite ease-in-out;
+        }
+
+        .badge-released {
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            color: #06b6d4;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 1px solid #06b6d4;
+            padding: 4px 12px;
+            border-radius: 50px;
+            background: rgba(6, 182, 212, 0.1);
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .header h1 span {
+            color: #a855f7;
+            text-shadow: 0 0 5px rgba(168, 85, 247, 0.5);
+        }
+
+        .brand-owner {
+            font-size: 12px;
+            font-weight: 600;
+            color: #ef4444;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .divider {
+            border: none;
+            height: 1px;
+            background: rgba(147, 51, 234, 0.3);
+            margin: 15px 0;
+        }
+
+        .system-status {
+            background: rgba(6, 182, 212, 0.05);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            border-radius: 10px;
+            padding: 8px;
+            display: flex;
+            justify-content: space-around;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dot-pulse {
+            width: 8px;
+            height: 8px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.7; }
+            50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 5px #22c55e; }
+            100% { transform: scale(0.9); opacity: 0.7; }
+        }
+
+        .menu-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: #06b6d4;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .product-card {
+            background: #130a26;
+            border: 1px solid rgba(147, 51, 234, 0.4);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            position: relative;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-2px);
+            border-color: #a855f7;
+        }
+
+        .product-card.premium-v5 {
+            border: 2px solid #9333ea;
+        }
+
+        .product-card.premium-v5::before {
+            content: "🔥 BEST SELLER";
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            background: #ef4444;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 9px;
+            font-weight: 900;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .product-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .product-price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 16px;
+            font-weight: 900;
+            color: #06b6d4;
+        }
+
+        .product-card.premium-v5 .product-price {
+            color: #a855f7;
+        }
+
+        .product-desc {
+            font-size: 12px;
+            color: #94a3b8;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .product-features {
+            list-style: none;
+            font-size: 12px;
+            color: #cbd5e1;
+            margin-bottom: 15px;
+        }
+
+        .product-features li {
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .product-features li::before {
+            content: "⚡";
+            color: #9333ea;
+        }
+
+        .btn-buy {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background: #9333ea;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+
+        .btn-buy:hover {
+            background: #a855f7;
+        }
+
+        .product-card:not(.premium-v5) .btn-buy {
+            background: transparent;
+            border: 1px solid #06b6d4;
+            color: #06b6d4;
+        }
+        
+        .product-card:not(.premium-v5) .btn-buy:hover {
+            background: rgba(6, 182, 212, 0.1);
+        }
+
+        .license-info {
+            text-align: center;
+            font-size: 10px;
+            color: #64748b;
+            margin-top: 8px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Header -->
+        <div class="header">
+            <!-- LOGO KUCING SVG INLINE - GAK PERLU FILE EKSTERNAL! -->
+            <div class="brand-logo">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Telinga Kiri -->
+                    <path d="M 25 45 L 20 15 L 42 32 Z" fill="#0f0720" stroke="#9333ea" stroke-width="2" stroke-linejoin="round"/>
+                    <!-- Telinga Kanan -->
+                    <path d="M 75 45 L 80 15 L 58 32 Z" fill="#0f0720" stroke="#9333ea" stroke-width="2" stroke-linejoin="round"/>
+                    
+                    <!-- Kepala -->
+                    <ellipse cx="50" cy="55" rx="30" ry="25" fill="#0f0720" stroke="#9333ea" stroke-width="2"/>
+                    
+                    <!-- Mata Kiri (Glowing) -->
+                    <ellipse class="cat-eye" cx="38" cy="50" rx="3" ry="5" fill="#06b6d4"/>
+                    <!-- Mata Kanan (Glowing) -->
+                    <ellipse class="cat-eye" cx="62" cy="50" rx="3" ry="5" fill="#06b6d4"/>
+                    
+                    <!-- Hidung -->
+                    <path d="M 48 60 L 52 60 L 50 63 Z" fill="#ef4444"/>
+                    
+                    <!-- Mulut -->
+                    <path d="M 50 63 Q 45 68 42 65" fill="none" stroke="#9333ea" stroke-width="1.5"/>
+                    <path d="M 50 63 Q 55 68 58 65" fill="none" stroke="#9333ea" stroke-width="1.5"/>
+                    
+                    <!-- Kumis Kiri -->
+                    <line x1="15" y1="55" x2="30" y2="58" stroke="#9333ea" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="15" y1="62" x2="30" y2="62" stroke="#9333ea" stroke-width="1.5" stroke-linecap="round"/>
+                    <!-- Kumis Kanan -->
+                    <line x1="85" y1="55" x2="70" y2="58" stroke="#9333ea" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="85" y1="62" x2="70" y2="62" stroke="#9333ea" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            
+            <div class="badge-released"> nyoba copy 🗿</div>
+            <h1>Bk<span></span></h1>
+            <div class="brand-owner">
+                copy 
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- System Live Status -->
+        <div class="system-status">
+            <div class="status-item">
+                <div class="dot-pulse"></div>
+                <span>STATUS: just friend 🗿</span>
+            </div>
+            <div class="status-item">
+                <span>🛡️ ANTI-BAN: semoga hehe</span>
+            </div>
+        </div>
+
+        <!-- Menu Title -->
+        <div class="menu-title">
+            🛒 ALL PRODUCT PRICELIST 📦
+        </div>
+
+        <!-- PAKET 1: BEST SELLER V5 -->
+        <div class="product-card premium-v5">
+            <div class="product-header">
+                <div class="product-name">ONLY JASA PASANG ROM</div>
+                <div class="product-price">Rp 10K</div>
+            </div>
+            <div class="product-desc">Hanya dapat jasa pasang saja, untuk rom buy sendiri di dalam apk cc cloud phonenya.</div>
+            
+            <ul class="product-features">
+                <li>JASA PASANG CC CLOUD PHONE</li>
+                <li>UNTUK ROM BUY SENDIRI DI APK NYA</li>
+                <li>SAFE ANTI BAN & BLACKLIST</li>
+            </ul>
+
+            <a href="https://wa.me/6283182456929?text=HALO%20BANG,%20SAYA%20MAU%20BUY%20%5BJASA%20PASANG%20ONLY%5D%F0%9F%98%88%F0%9F%97%BF" target="_blank" class="btn-buy">
+                ORDER PRODUCT [VIA WA]
+            </a>
+            <div class="license-info">⚠️ NOTE PHP/C3 BLOK🗿 ⚠️</div>
+        </div>
+
+        <!-- PAKET 2: PAKET HEMAT -->
+        <div class="product-card">
+            <div class="product-header">
+                <div class="product-name">JASA PASANG + ROM</div>
+                <div class="product-price">Rp 20K</div>
+            </div>
+            <div class="product-desc">Sudah dapat jasa pasang + rom cc cloud tinggal main.</div>
+            
+            <ul class="product-features">
+                <li>JASA [PASANG + ROM] CC CLOUD PHONE</li>
+                <li>PRODUCT INI LANGSUNG MAIN</li>
+                <li>SAFE ANTI BAN & BLACKLIST</li>
+            </ul>
+
+            <a href="https://wa.me/6283182456929?text=HALO%20BANG,%20SAYA%20MAU%20BUY%20%5BJASA%20PASANG%20+%20ROM%5D%F0%9F%98%88%F0%9F%97%BF" target="_blank" class="btn-buy">
+                ORDER PRODUCT (VIA WA)
+            </a>
+            <div class="license-info">⚠️ NOTE PHP/C3 BLOK🗿 ⚠️</div>
+        </div>
+
+    </div>
+
+</body>
+  </html>
